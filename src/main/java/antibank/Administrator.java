@@ -1,18 +1,21 @@
 package antibank;
 public class Administrator extends Functionary implements IAuth {
 
-    private String password = "admin123";
+    private final UtilAuth utilAuth;
+
+    public Administrator(){
+        this.utilAuth = new UtilAuth();
+        this.utilAuth.setPassword("admin123");
+    }
     public void setPassword(String password) {
-        this.password = password;
+        this.utilAuth.setPassword(password);
     }
 
     public boolean login (String pswd){
-        if ( this.password.isEmpty() )
-            return "antipass" == pswd;
-        else return password == pswd;
+        return this.utilAuth.login(pswd);
     }
 
     public double getBonus() {
-        return 0;
+        return this.getSalary() * 0.1;
     }
 }

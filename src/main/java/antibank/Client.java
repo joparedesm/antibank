@@ -5,8 +5,12 @@ public class Client implements IAuth {
     private String name;
     private String document;
     private String phone_number;
+    private final UtilAuth utilAuth;
 
-    public Client(){}
+    public Client(){
+        this.utilAuth = new UtilAuth();
+        this.utilAuth.setPassword("antipass123");
+    }
 
     public String getName() {
         return name;
@@ -34,11 +38,11 @@ public class Client implements IAuth {
 
     @Override
     public void setPassword(String password) {
-
+        this.utilAuth.setPassword(password);
     }
 
     @Override
     public boolean login(String pswd) {
-        return false;
+        return this.utilAuth.login(pswd);
     }
 }

@@ -1,6 +1,6 @@
 package antibank;
 
-public class CheckingAccount extends Account{
+public class CheckingAccount extends Account implements Taxation{
     public CheckingAccount(int agency, int number){
         super(agency, number);
     }
@@ -16,4 +16,8 @@ public class CheckingAccount extends Account{
         return super.withdraw(withdrawTax);
     }
 
+    @Override
+    public double getTaxValue() {
+        return super.getBalance() * 0.01;
+    }
 }
